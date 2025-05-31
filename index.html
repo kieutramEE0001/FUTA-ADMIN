@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Quản lý tài khoản - FUTA</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="../image/logo-header.png" alt="FUTA Logo">
+        <span>FUTA Bus Lines</span>
+      </div>
+      <nav>
+        <a class="active" href="#">Quản lý tài khoản</a>
+        <a href="#">Báo cáo thống kê</a>
+      </nav>
+      <button class="logout-btn">Đăng xuất</button>
+    </aside>
+
+    <main class="content">
+      <header class="content-header">
+        <h2>QUẢN LÝ TÀI KHOẢN</h2>
+        <div class="user-box">
+          <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="User">
+          <span>Nguyen Van A</span>
+        </div>
+      </header>
+
+      <section class="table-section">
+        <div class="section-header">
+          <h3>DANH SÁCH TÀI KHOẢN NHÂN VIÊN</h3>
+          <button class="add-btn">+ Thêm</button>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Mã tài khoản</th>
+              <th>Tên nhân viên</th>
+              <th>Số điện thoại</th>
+              <th>Tên đăng nhập</th>
+              <th>Mật khẩu</th>
+              <th>Chức năng</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Dữ liệu mẫu -->
+            <tr>
+              <td><input type="checkbox"></td>
+              <td>NV001</td>
+              <td>Nguyễn Văn Bình An</td>
+              <td>0123456987</td>
+              <td>NVdangnhap001</td>
+              <td>09@#1xxxxxxx</td>
+              <td class="actions">
+                <button class="detail">Chi tiết</button>
+                <button class="edit">Sửa</button>
+                <button class="delete">Xóa</button>
+              </td>
+            </tr>
+            <tr>
+              <td><input type="checkbox"></td>
+              <td>NV002</td>
+              <td>Trần Thị Thu</td>
+              <td>0124476982</td>
+              <td>NVdangnhap002</td>
+              <td>09@#1xxxxxxx</td>
+              <td class="actions">
+                <button class="detail">Chi tiết</button>
+                <button class="edit" class="add-btn">Sửa</button>
+                <button class="delete">Xóa</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <!-- Form Thêm Tài Khoản -->
+
+
+<div class="modal show" id="addAccountModal" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="modal-title">THÊM TÀI KHOẢN NHÂN VIÊN</span>
+        <div class="modal-buttons">
+          <button class="minimize">–</button>
+          <button class="close">×</button>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="maTK">Mã tài khoản</label>
+          <input type="text" id="maTK" value="NV011" readonly />
+        </div>
+
+        <div class="form-columns">
+          <!-- Thông tin nhân viên -->
+          <div class="column">
+            <h4>Thông tin nhân viên</h4>
+            <label>Tên nhân viên<span>*</span></label>
+            <input type="text" required />
+          <div class="form-row">
+  <div class="form-group half">
+    <label>Ngày sinh</label>
+    <input type="date" />
+  </div>
+  <div class="form-group half">
+    <label>Giới tính</label>
+    <div class="gender">
+      <label><input type="radio" name="gender" checked /> <span class="orange">Nam</span></label>
+      <label><input type="radio" name="gender" /> <span>Nữ</span></label>
+    </div>
+  </div>
+</div>
+
+            <label>Số điện thoại<span>*</span></label>
+            <input type="text" required />
+            <label>Email<span>*</span></label>
+            <input type="email" required />
+          </div>
+
+          <!-- Cài đặt tài khoản -->
+          <div class="column">
+            <h4>Cài đặt tài khoản</h4>
+            <label>Tên đăng nhập<span>*</span></label>
+            <input type="text" required />
+            <label>Mật khẩu<span>*</span></label>
+            <input type="password" required />
+            <label>Quyền truy cập hệ thống<span>*</span></label>
+            <div class="roles">
+              <label><input type="radio" name="role" checked /> <span class="orange">Quản lý vé</span></label>
+              <label><input type="radio" name="role" /> <span class="orange">Quản lý tuyến xe</span></label>
+              <label><input type="radio" name="role" /> <span class="orange">Quản lý chuyến xe</span></label>
+              <label><input type="radio" name="role" disabled /> <span>Quản lý tài khoản</span></label>
+              <label><input type="radio" name="role" disabled /> <span>Báo cáo thống kê</span></label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-footer">
+          <button class="submit-btn">Thêm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Form Sửa Tài Khoản -->
+<div class="modal show" id="editAccountModal" style="display: none;">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="modal-title">SỬA TÀI KHOẢN NHÂN VIÊN</span>
+      <div class="modal-buttons">
+        <button class="minimize">–</button>
+        <button class="close">×</button>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label for="editMaTK">Mã tài khoản</label>
+        <input type="text" id="editMaTK" value="NV001" readonly />
+      </div>
+
+      <div class="form-columns">
+        <!-- Thông tin nhân viên -->
+        <div class="column">
+          <h4>Thông tin nhân viên</h4>
+          <label>Tên nhân viên<span>*</span></label>
+          <input type="text" id="editTenNV" required />
+
+          <div class="form-row">
+            <div class="form-group half">
+              <label>Ngày sinh</label>
+              <input type="date" id="editNgaySinh" />
+            </div>
+            <div class="form-group half">
+              <label>Giới tính</label>
+              <div class="gender">
+                <label><input type="radio" name="editGender" checked /> <span class="orange">Nam</span></label>
+                <label><input type="radio" name="editGender" /> <span>Nữ</span></label>
+              </div>
+            </div>
+          </div>
+
+          <label>Số điện thoại<span>*</span></label>
+          <input type="text" id="editSDT" required />
+          <label>Email<span>*</span></label>
+          <input type="email" id="editEmail" required />
+        </div>
+
+        <!-- Cài đặt tài khoản -->
+        <div class="column">
+          <h4>Cài đặt tài khoản</h4>
+          <label>Tên đăng nhập<span>*</span></label>
+          <input type="text" id="editUsername" required />
+          <label>Mật khẩu<span>*</span></label>
+          <input type="password" id="editPassword" required />
+          <label>Quyền truy cập hệ thống<span>*</span></label>
+          <div class="roles">
+            <label><input type="radio" name="editRole" checked /> <span class="orange">Quản lý vé</span></label>
+            <label><input type="radio" name="editRole" /> <span class="orange">Quản lý tuyến xe</span></label>
+            <label><input type="radio" name="editRole" /> <span class="orange">Quản lý chuyến xe</span></label>
+            <label><input type="radio" name="editRole" disabled /> <span>Quản lý tài khoản</span></label>
+            <label><input type="radio" name="editRole" disabled /> <span>Báo cáo thống kê</span></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-footer">
+        <button class="submit-btn">Cập nhật</button>
+      </div>
+    </div>
+  </div>
+</div>
+    </main>
+  </div>
+  <!-- Modal Xóa Tài Khoản -->
+<div class="modal-overlay" id="deleteConfirmModal" style="display: none;">
+  <div class="delete-modal">
+    <span class="close-delete" onclick="closeDeleteModal()">&times;</span>
+    <h3>Xóa tài khoản</h3>
+    <p>Bạn chắc chắn muốn xóa tài khoản <strong id="deleteAccountId">NV001</strong>?</p>
+    <div class="delete-buttons">
+      <button class="btn-cancel" onclick="closeDeleteModal()">Hủy</button>
+      <button class="btn-confirm" onclick="confirmDelete()">Xác nhận</button>
+    </div>
+  </div>
+</div>
+  <script src="script.js"></script>
+  
+</body>
+</html>
